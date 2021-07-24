@@ -1,3 +1,5 @@
+//package battleship;
+
 package com.kabir.milton;
 
 import java.util.Scanner;
@@ -15,7 +17,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        // write your code herez
+        // write your code here
         for (int i = 0; i < 12; i++) {
             ar[i][0] = "";
             for (int j = 0; j < 12; j++) {
@@ -82,7 +84,7 @@ public class Main {
                 }
                 int ee = 0;
                 for (int j = Math.min(xx, yy); j <= Math.max(xx, yy); j++) {
-                    if (ar[j][Integer.parseInt(inp[0].substring(1))-1] == "O"||ar[j][Integer.parseInt(inp[0].substring(1))+1] == "O"||ar[j+1][Integer.parseInt(inp[0].substring(1))] == "O") {
+                    if (ar[j][Integer.parseInt(inp[0].substring(1)) - 1] == "O" || ar[j][Integer.parseInt(inp[0].substring(1)) + 1] == "O" || ar[j + 1][Integer.parseInt(inp[0].substring(1))] == "O") {
                         ee = 1;
                     }
                 }
@@ -154,7 +156,7 @@ public class Main {
                 }
                 int ee = 0;
                 for (int j = Math.min(xx, yy); j <= Math.max(xx, yy); j++) {
-                    if (ar[j][Integer.parseInt(inp[0].substring(1))-1] == "O"||ar[j][Integer.parseInt(inp[0].substring(1))+1] == "O"||ar[j+1][Integer.parseInt(inp[0].substring(1))] == "O") {
+                    if (ar[j][Integer.parseInt(inp[0].substring(1)) - 1] == "O" || ar[j][Integer.parseInt(inp[0].substring(1)) + 1] == "O" || ar[j + 1][Integer.parseInt(inp[0].substring(1))] == "O") {
                         ee = 1;
                     }
                 }
@@ -225,7 +227,7 @@ public class Main {
 
                 int ee = 0;
                 for (int j = Math.min(xx, yy); j <= Math.max(xx, yy); j++) {
-                    if (ar[j][Integer.parseInt(inp[0].substring(1))-1] == "O"||ar[j][Integer.parseInt(inp[0].substring(1))+1] == "O"||ar[j+1][Integer.parseInt(inp[0].substring(1))] == "O") {
+                    if (ar[j][Integer.parseInt(inp[0].substring(1)) - 1] == "O" || ar[j][Integer.parseInt(inp[0].substring(1)) + 1] == "O" || ar[j + 1][Integer.parseInt(inp[0].substring(1))] == "O") {
                         ee = 1;
                     }
                 }
@@ -296,7 +298,7 @@ public class Main {
                 }
                 int ee = 0;
                 for (int j = Math.min(xx, yy); j <= Math.max(xx, yy); j++) {
-                    if (ar[j][Integer.parseInt(inp[0].substring(1))-1] == "O"||ar[j][Integer.parseInt(inp[0].substring(1))+1] == "O"||ar[j+1][Integer.parseInt(inp[0].substring(1))] == "O") {
+                    if (ar[j][Integer.parseInt(inp[0].substring(1)) - 1] == "O" || ar[j][Integer.parseInt(inp[0].substring(1)) + 1] == "O" || ar[j + 1][Integer.parseInt(inp[0].substring(1))] == "O") {
                         ee = 1;
                     }
                 }
@@ -367,7 +369,7 @@ public class Main {
                 }
                 int ee = 0;
                 for (int j = Math.min(xx, yy); j <= Math.max(xx, yy); j++) {
-                    if (ar[j][Integer.parseInt(inp[0].substring(1))-1] == "O"||ar[j][Integer.parseInt(inp[0].substring(1))+1] == "O"||ar[j+1][Integer.parseInt(inp[0].substring(1))] == "O") {
+                    if (ar[j][Integer.parseInt(inp[0].substring(1)) - 1] == "O" || ar[j][Integer.parseInt(inp[0].substring(1)) + 1] == "O" || ar[j + 1][Integer.parseInt(inp[0].substring(1))] == "O") {
                         ee = 1;
                     }
                 }
@@ -386,6 +388,66 @@ public class Main {
 
             print();
             break;
+        }
+        System.out.println("The game starts!");
+        print();
+        ck = 0;
+        while (true) {
+            if (ck == 1) {
+                break;
+            }
+            System.out.println("Take a shot!");
+            String inp[] = sc.nextLine().split(" ");
+            String s1 = inp[0].substring(0, 1);
+            String s2 = inp[0].substring(1);
+            int e1=0,e2=0,ee=1;
+            for(int i=1;i<11;i++){
+                if(ar[i][0].equals(s1)){
+                    e1=1;
+                }
+                if(ar[0][i].equals(s2)){
+                    e2=1;
+                }
+            }
+            if(e1==0||e2==0){
+                System.out.println("Error! You entered the wrong coordinates! Try again:");
+                continue;
+            }
+
+            for(int i=1;i<11;i++){
+                if(ar[i][0].equals(s1)){
+                    for(int j=1;j<11;j++){
+                        if(ar[0][j].equals(s2)){
+                            if(ar[i][j]=="O"){
+                                ar[i][j]="X";
+                                ee=0;
+                            }
+
+                        }
+                    }
+                }
+            }
+            if(ee==0){
+                print();
+                System.out.println("You hit a ship!");
+                break;
+            }
+            else{
+                for(int i=1;i<11;i++){
+                    if(ar[i][0].equals(s1)){
+                        for(int j=1;j<11;j++){
+                            if(ar[0][j].equals(s2)){
+                                    ar[i][j]="M";
+                            }
+                        }
+                    }
+                }
+                print();
+                System.out.println("You missed!");
+                break;
+            }
+
+
         }
     }
 }
