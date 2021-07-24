@@ -2,7 +2,7 @@
 
 package com.kabir.milton;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static String ar[][] = new String[12][12];
@@ -48,6 +48,20 @@ public class Main {
             br[i][0] = Character.toString(y);
             x++;
         }
+        Map<String,String> arc = new HashMap<String, String>();
+        Map<String,String> btt = new HashMap<String, String>();
+        Map<String,String> sub = new HashMap<String, String>();
+        Map<String,String> cru = new HashMap<String, String>();
+        Map<String,String> des = new HashMap<String, String>();
+
+        Map<String,String> mp = new HashMap<String, String>();
+        mp.put("arc","1");
+        mp.put("btt","1");
+        mp.put("sub","1");
+        mp.put("cru","1");
+        mp.put("des","1");
+
+
         Scanner sc = new Scanner(System.in);
         int ck = 0;
         while (true) {
@@ -84,6 +98,7 @@ public class Main {
                     if (ar[i][0].equals(s1)) {
                         for (int j = Math.min(xx, yy); j <= Math.max(xx, yy); j++) {
                             ar[i][j] = "O";
+                            arc.put(s1+Integer.toString(j),"O");
                         }
                     }
                 }
@@ -110,6 +125,11 @@ public class Main {
                 }
                 for (int j = Math.min(xx, yy); j <= Math.max(xx, yy); j++) {
                     ar[j][Integer.parseInt(inp[0].substring(1))] = "O";
+                    int ab=j+'A'-1;
+                    char ch=(char)(ab);
+                    String aa=Character.toString(ch);
+                    String bb=inp[0].substring(1);
+                    arc.put(aa+bb,"O");
                 }
             } else {
                 System.out.println("Error! Wrong length of the Aircraft Carrier! Try again:");
@@ -119,7 +139,6 @@ public class Main {
             print();
             break;
         }
-
 
         ck = 0;
         while (true) {
@@ -156,9 +175,11 @@ public class Main {
                     if (ar[i][0].equals(s1)) {
                         for (int j = Math.min(xx, yy); j <= Math.max(xx, yy); j++) {
                             ar[i][j] = "O";
+                            btt.put(s1+Integer.toString(j),"O");
                         }
                     }
                 }
+
             } else if (Integer.parseInt(inp[0].substring(1)) == Integer.parseInt(inp[1].substring(1))) {
                 char c1 = s1.charAt(0);
                 char c2 = s2.charAt(0);
@@ -182,6 +203,11 @@ public class Main {
                 }
                 for (int j = Math.min(xx, yy); j <= Math.max(xx, yy); j++) {
                     ar[j][Integer.parseInt(inp[0].substring(1))] = "O";
+                    int ab=j+'A'-1;
+                    char ch=(char)(ab);
+                    String aa=Character.toString(ch);
+                    String bb=inp[0].substring(1);
+                    btt.put(aa+bb,"O");
                 }
             } else {
                 System.out.println("Error! Wrong length of the Battleship! Try again:");
@@ -226,9 +252,11 @@ public class Main {
                     if (ar[i][0].equals(s1)) {
                         for (int j = Math.min(xx, yy); j <= Math.max(xx, yy); j++) {
                             ar[i][j] = "O";
+                            sub.put(s1+Integer.toString(j),"O");
                         }
                     }
                 }
+
             } else if (Integer.parseInt(inp[0].substring(1)) == Integer.parseInt(inp[1].substring(1))) {
                 char c1 = s1.charAt(0);
                 char c2 = s2.charAt(0);
@@ -253,6 +281,11 @@ public class Main {
                 }
                 for (int j = Math.min(xx, yy); j <= Math.max(xx, yy); j++) {
                     ar[j][Integer.parseInt(inp[0].substring(1))] = "O";
+                    int ab=j+'A'-1;
+                    char ch=(char)(ab);
+                    String aa=Character.toString(ch);
+                    String bb=inp[0].substring(1);
+                    sub.put(aa+bb,"O");
                 }
             } else {
                 System.out.println("Error! Wrong length of the Submarine! Try again:");
@@ -298,9 +331,11 @@ public class Main {
                     if (ar[i][0].equals(s1)) {
                         for (int j = Math.min(xx, yy); j <= Math.max(xx, yy); j++) {
                             ar[i][j] = "O";
+                            cru.put(s1+Integer.toString(j),"O");
                         }
                     }
                 }
+
             } else if (Integer.parseInt(inp[0].substring(1)) == Integer.parseInt(inp[1].substring(1))) {
                 char c1 = s1.charAt(0);
                 char c2 = s2.charAt(0);
@@ -324,6 +359,11 @@ public class Main {
                 }
                 for (int j = Math.min(xx, yy); j <= Math.max(xx, yy); j++) {
                     ar[j][Integer.parseInt(inp[0].substring(1))] = "O";
+                    int ab=j+'A'-1;
+                    char ch=(char)(ab);
+                    String aa=Character.toString(ch);
+                    String bb=inp[0].substring(1);
+                    cru.put(aa+bb,"O");
                 }
             } else {
                 System.out.println("Error! Wrong length of the Cruiser! Try again:");
@@ -369,9 +409,11 @@ public class Main {
                     if (ar[i][0].equals(s1)) {
                         for (int j = Math.min(xx, yy); j <= Math.max(xx, yy); j++) {
                             ar[i][j] = "O";
+                            des.put(s1+Integer.toString(j),"O");
                         }
                     }
                 }
+
             } else if (Integer.parseInt(inp[0].substring(1)) == Integer.parseInt(inp[1].substring(1))) {
                 char c1 = s1.charAt(0);
                 char c2 = s2.charAt(0);
@@ -395,6 +437,11 @@ public class Main {
                 }
                 for (int j = Math.min(xx, yy); j <= Math.max(xx, yy); j++) {
                     ar[j][Integer.parseInt(inp[0].substring(1))] = "O";
+                    int ab=j+'A'-1;
+                    char ch=(char)(ab);
+                    String aa=Character.toString(ch);
+                    String bb=inp[0].substring(1);
+                    des.put(aa+bb,"O");
                 }
             } else {
                 System.out.println("Error! Wrong length of the Destroyer! Try again:");
@@ -404,6 +451,13 @@ public class Main {
             print();
             break;
         }
+//        System.out.println(arc);
+//        System.out.println(btt);
+//        System.out.println(sub);
+//        System.out.println(cru);
+//        System.out.println(des);
+
+        //Game Starts
 
 
         System.out.println("The game starts!");
@@ -457,17 +511,87 @@ public class Main {
                     }
                     System.out.println();
                 }
-                System.out.println("You hit a ship!");
-                print();
-                break;
+                arc.remove(inp[0]);
+                btt.remove(inp[0]);
+                sub.remove(inp[0]);
+                cru.remove(inp[0]);
+                des.remove(inp[0]);
+                if(arc.size()==0){
+                    if(mp.containsKey("arc")){
+                        mp.remove("arc");
+                        if(mp.size()==0){
+                            System.out.println("You sank the last ship. You won. Congratulations!");
+                            break;
+                        }
+                        System.out.println("You sank a ship! Specify a new target:");
+
+                        continue;
+                    }
+
+                }
+                if(btt.size()==0){
+                    if(mp.containsKey("btt")){
+                        mp.remove("btt");
+                        if(mp.size()==0){
+                            System.out.println("You sank the last ship. You won. Congratulations!");
+                            break;
+                        }
+                        System.out.println("You sank a ship! Specify a new target:");
+
+                        continue;
+                    }
+
+                }
+                if(sub.size()==0){
+                    if(mp.containsKey("sub")){
+                        mp.remove("sub");
+                        if(mp.size()==0){
+                            System.out.println("You sank the last ship. You won. Congratulations!");
+                            break;
+                        }
+                        System.out.println("You sank a ship! Specify a new target:");
+
+                        continue;
+                    }
+                }
+                if(cru.size()==0){
+                    if(mp.containsKey("cru")){
+                        mp.remove("cru");
+                        if(mp.size()==0){
+                            System.out.println("You sank the last ship. You won. Congratulations!");
+                            break;
+                        }
+                        System.out.println("You sank a ship! Specify a new target:");
+
+                        continue;
+                    }
+
+                }
+
+                if(des.size()==0){
+                    if(mp.containsKey("des")){
+                        mp.remove("des");
+                        if(mp.size()==0){
+                            System.out.println("You sank the last ship. You won. Congratulations!");
+                            break;
+                        }
+                        System.out.println("You sank a ship! Specify a new target:");
+                        continue;
+                    }
+
+                }
+
+                System.out.println("You hit a ship! Try again:");
             }
             else{
                 for(int i=1;i<11;i++){
                     if(ar[i][0].equals(s1)){
                         for(int j=1;j<11;j++){
                             if(ar[0][j].equals(s2)){
-                                ar[i][j]="M";
-                                br[i][j]="M";
+                                if(ar[i][j]!="X"&&br[i][j]!="X") {
+                                    ar[i][j] = "M";
+                                    br[i][j] = "M";
+                                }
                             }
                         }
                     }
@@ -479,10 +603,7 @@ public class Main {
                     System.out.println();
                 }
 
-                System.out.println("You missed!");
-
-                print();
-                break;
+                System.out.println("You missed! Try again:");
             }
 
 
