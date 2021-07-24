@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Main {
     public static String ar[][] = new String[12][12];
-
+    public static String br[][] = new String[12][12];
     public static void print() {
         for (int i = 0; i < 11; i++) {
             for (int j = 0; j < 11; j++) {
@@ -33,6 +33,21 @@ public class Main {
             x++;
         }
         print();
+//        br=ar;
+        for (int i = 0; i < 12; i++) {
+            br[i][0] = "";
+            for (int j = 0; j < 12; j++) {
+                br[i][j] = "~";
+            }
+        }
+        br[0][0] = " ";
+        x = 'A';
+        for (int i = 1; i < 11; i++) {
+            br[0][i] = Integer.toString(i);
+            char y = (char) (x);
+            br[i][0] = Character.toString(y);
+            x++;
+        }
         Scanner sc = new Scanner(System.in);
         int ck = 0;
         while (true) {
@@ -389,8 +404,15 @@ public class Main {
             print();
             break;
         }
+
+
         System.out.println("The game starts!");
-        print();
+        for (int i = 0; i < 11; i++) {
+            for (int j = 0; j < 11; j++) {
+                System.out.print(br[i][j] + " ");
+            }
+            System.out.println();
+        }
         ck = 0;
         while (true) {
             if (ck == 1) {
@@ -420,6 +442,7 @@ public class Main {
                         if(ar[0][j].equals(s2)){
                             if(ar[i][j]=="O"){
                                 ar[i][j]="X";
+                                br[i][j]="X";
                                 ee=0;
                             }
 
@@ -428,8 +451,14 @@ public class Main {
                 }
             }
             if(ee==0){
-                print();
+                for (int i = 0; i < 11; i++) {
+                    for (int j = 0; j < 11; j++) {
+                        System.out.print(br[i][j] + " ");
+                    }
+                    System.out.println();
+                }
                 System.out.println("You hit a ship!");
+                print();
                 break;
             }
             else{
@@ -437,13 +466,22 @@ public class Main {
                     if(ar[i][0].equals(s1)){
                         for(int j=1;j<11;j++){
                             if(ar[0][j].equals(s2)){
-                                    ar[i][j]="M";
+                                ar[i][j]="M";
+                                br[i][j]="M";
                             }
                         }
                     }
                 }
-                print();
+                for (int i = 0; i < 11; i++) {
+                    for (int j = 0; j < 11; j++) {
+                        System.out.print(br[i][j] + " ");
+                    }
+                    System.out.println();
+                }
+
                 System.out.println("You missed!");
+
+                print();
                 break;
             }
 
